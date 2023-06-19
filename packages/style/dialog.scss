@@ -1,0 +1,30 @@
+@use "mixins/mixins" as *;
+@use "common/var" as *;
+
+@include b("dialog") {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include e("body") {
+    width: 50%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+  }
+}
+.dialog-show {
+  overflow: hidden;
+}
+// element plus的格子滤镜
+.mask {
+  background-image: radial-gradient(transparent 1px, #fff 1px);
+  background-size: 4px 4px;
+  backdrop-filter: saturate(50%) blur(4px);
+}

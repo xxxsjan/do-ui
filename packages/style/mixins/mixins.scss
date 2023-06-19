@@ -1,0 +1,125 @@
+@use 'sass:selector';
+@use 'config' as *;
+@forward 'config';
+
+@mixin b($block) {
+  $B: $namespace + '-' + $block;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin g($block, $group) {
+  $B: $namespace + '-' + $block + '-' + $group;
+
+  .#{$B} {
+    @content;
+  }
+}
+
+@mixin whenFirst($child) {
+  @at-root #{selector.unify(&, $child)} {
+    @at-root &#{$first-child} {
+      @content;
+    }
+  }
+}
+
+@mixin whenLast($child) {
+  @at-root #{selector.unify(&, $child)} {
+    @at-root &#{$last-child} {
+      @content;
+    }
+  }
+}
+
+// .z-button.is-xx
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+// .z-button.z-button--primary.is-xx
+@mixin whenD($child, $state) {
+  @at-root #{selector.unify(&, $child)} {
+    @at-root &.#{$state-prefix + $state} {
+      @content;
+    }
+  }
+}
+
+// &--primary => .z-button--primary
+@mixin m($modifier) {
+  @at-root {
+    #{& + $modifier-separator + $modifier} {
+      @content;
+    }
+  }
+}
+
+// &__header  => .z-button__header
+@mixin e($element) {
+  @at-root {
+    #{& + $element-separator + $element} {
+      @content;
+    }
+  }
+}
+
+@mixin button-variant($color, $background-color, $border-color) {
+  border-color: $border-color;
+  color: $color;
+  background: $background-color;
+}
+
+@mixin link-variant($color) {
+  color: $color;
+}
+
+@mixin is-disabled($color, $background-color, $border-color) {
+  border-color: $border-color;
+  color: $color;
+  background-color: $background-color;
+}
+
+@mixin is-circle() {
+  padding: 12px;
+  border-radius: 50%;
+}
+
+@mixin is-underline($color) {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid $color;
+  content: '';
+}
+
+@mixin button-text($color) {
+  padding-right: 0;
+  padding-left: 0;
+  border-color: transparent;
+  color: $color;
+  background: transparent;
+}
+
+@mixin button-center-color() {
+  border-right-color: hsl(0deg 0% 100% / 50%);
+  border-left-color: hsl(0deg 0% 100% / 50%);
+}
+
+@mixin hide-scrollbar() {
+  .#{'hide-scrollbar'} {
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
