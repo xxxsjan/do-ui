@@ -1,7 +1,13 @@
 import { createApp } from "vue";
-import "./style.css";
 import App from "./App.vue";
 
-import DoUi from "@do-ui/components";
+import DoUI from "@do-ui/components";
 
-createApp(App).use(DoUi).mount("#app");
+import "./style.css";
+import "@do-ui/style/index.scss";
+
+const app = createApp(App);
+
+app.use(DoUI);
+
+app.mount("#app");
