@@ -1,8 +1,4 @@
 import Dialog from "./src/dialog.vue";
+import { withInstall } from "@do-ui/utils";
 
-export default {
-  install(app) {
-    app.component(Dialog.name, Dialog);
-  },
-};
-
+export default withInstall(Dialog);
