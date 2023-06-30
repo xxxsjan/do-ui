@@ -38,11 +38,9 @@ $link-text-color: $color-default;
   @include m("default") {
     @include underline($color-default, $color-primary-light-3);
   }
-
   @include m("primary") {
     @include underline($color-primary, $color-primary-light-3);
   }
-
   @include m("success") {
     @include underline($color-success, $color-success-light-3);
   }

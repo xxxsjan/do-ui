@@ -12,13 +12,9 @@ const visible = ref(false);
     <d-link type="warning">warning</d-link>
     <d-link type="danger">danger</d-link>
     <d-link type="info">info</d-link>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+   
     <button @click="visible = !visible">Toggle</button>
+    
     <div style="height: 1000px; width: 200px; border: 1px solid #333"></div>
     <d-dialog v-model:visible="visible" />
   </div>
