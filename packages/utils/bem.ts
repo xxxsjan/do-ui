@@ -47,9 +47,9 @@ function createBEM(prefixName: string) {
     is,
   };
 }
-
+const namespace = "d";
 export function createNamespace(name: string) {
-  const prefixName = `z-${name}`;
+  const prefixName = `${namespace}-${name}`;
   // 创建 BEM 规范的函数
   return createBEM(prefixName);
 }
