@@ -1,0 +1,63 @@
+@use "mixins" as *;
+@use "var" as *;
+
+$link-font-size: 14px;
+$link-font-weight: 500;
+$link-text-color: $color-default;
+
+@mixin underline($color, $hover) {
+  color: $color;
+
+  &.is-underline {
+    background: linear-gradient(to right, $hover, $hover) no-repeat right bottom;
+    background-size: 0 1px;
+    transition: background-size 1s, color 1s;
+    &:hover {
+      background-position-x: left;
+      background-size: 100% 1px;
+      color: $hover;
+    }
+  }
+}
+
+@include b("link") {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  position: relative;
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: $link-font-size;
+  font-weight: $link-font-weight;
+  color: $link-text-color;
+
+  @include m("default") {
+    @include underline($color-default, $color-primary-light-3);
+  }
+
+  @include m("primary") {
+    @include underline($color-primary, $color-primary-light-3);
+  }
+
+  @include m("success") {
+    @include underline($color-success, $color-success-light-3);
+  }
+  @include m("warning") {
+    @include underline($color-warning, $color-warning-light-3);
+  }
+  @include m("danger") {
+    @include underline($color-danger, $color-danger-light-3);
+  }
+  @include m("info") {
+    @include underline($color-info, $color-info-light-3);
+  }
+  @include e("inner") {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
