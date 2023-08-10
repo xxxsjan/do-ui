@@ -70,11 +70,11 @@
 import type { Dayjs } from "dayjs";
 import dayjs from "dayjs";
 import { computed, ref } from "vue";
-import {createNamespace} from '@do-ui/utils/bem'
+import { createNamespace } from "@do-ui/utils/bem";
 
 defineOptions({
-  name: 'd-calendar',
-  inheritAttrs: false
+  name: "d-calendar",
+  inheritAttrs: false,
 });
 
 import {
@@ -204,7 +204,6 @@ const rows = computed(() => {
     return dateList.slice(start, start + 7);
   });
 });
-
 // 有 range 指定范围不能超过两个月
 const rangeRows = computed(() => {
   const [startDate, endDate] = props.range as Array<string>;
@@ -305,9 +304,10 @@ const getSlotData = ({ text, type }: CalendarDateCell) => {
   // 返回插槽数据
   return {
     isSelect: _date.isSame(selectDay.value, "day"),
-    day: _date.format("MM-DD"),
+    c: _date.format("MM-DD"),
     date: _date.toDate(),
     type,
+    text,
   };
 };
 </script>

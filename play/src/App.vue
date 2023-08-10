@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-const visible = ref(false);
+// import { ref } from "vue";
+import TestCalendar from "./components/test-calendar.vue";
+// const visible = ref(false);
 </script>
 
 <template>
   <div>
-    <d-link>default</d-link>
+    <!-- <d-link>default</d-link>
     <d-link type="primary">primary</d-link>
     <d-link type="success">success</d-link>
     <d-link type="warning">warning</d-link>
     <d-link type="danger">danger</d-link>
     <d-link type="info">info</d-link>
-   
+
     <button @click="visible = !visible">Toggle</button>
-    
+
     <div style="height: 1000px; width: 200px; border: 1px solid #333"></div>
-    <d-dialog v-model:visible="visible" />
+    <d-dialog v-model:visible="visible" /> -->
+
+    <TestCalendar />
   </div>
 </template>
 
