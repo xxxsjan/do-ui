@@ -4,9 +4,11 @@
     <d-calendar v-model="currentDate">
       <template #date-cell="{ data }">
         {{ data.text }}
-        <div class="dou-kuai">dou</div>
-        <div class="dou-kuai">kuai</div>
-        <div class="dou-kuai">yun</div>
+        <div class="dou-kuai">
+          <img src="/抖音.png" alt="" />
+        </div>
+        <div class="dou-kuai"><img src="/快手.png" alt="" /></div>
+        <div class="dou-kuai"><img src="/云闪付.png" alt="" /></div>
       </template>
     </d-calendar>
   </div>
@@ -28,6 +30,11 @@ function handlePrint() {
   line-height: 20px;
   text-align: left;
   color: #666;
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 .calendar-demo .d-calendar__header {
