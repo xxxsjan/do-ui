@@ -1,16 +1,32 @@
 <template>
-  <button @click="handlePrint">打印</button>
-  <div class="calendar-demo" ref="calendarRef">
-    <d-calendar v-model="currentDate">
-      <template #date-cell="{ data }">
-        {{ data.text }}
-        <div class="dou-kuai">
-          <img src="/抖音.png" alt="" />
-        </div>
-        <div class="dou-kuai"><img src="/快手.png" alt="" /></div>
-        <div class="dou-kuai"><img src="/云闪付.png" alt="" /></div>
-      </template>
-    </d-calendar>
+  <div>
+    <!-- <button @click="handlePrint">打印</button> -->
+    <div id="printTest">
+      <p>我是打印区域</p>
+    </div>
+    <button v-print="'#printTest'">print nb 打印</button>
+    <div class="calendar-demo" ref="calendarRef">
+      <d-calendar v-model="currentDate">
+        <template #date-cell="{ data }">
+          <div class="calendar-item">
+            <div class="calendar-date">{{ data.text }}</div>
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+
+            <div class="parent">
+              <div
+                class="flex flex-col"
+                v-for="(item, index) in 4"
+                :key="index"
+              >
+                <div style="height: 50%">/</div>
+                <div style="height: 50%">/</div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </d-calendar>
+    </div>
   </div>
 </template>
 
@@ -39,5 +55,52 @@ function handlePrint() {
 
 .calendar-demo .d-calendar__header {
   display: none;
+}
+
+.calendar-item {
+  position: relative;
+  height: 100%;
+
+  .parent {
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+    position: absolute;
+    left: -8px;
+    top: -8px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .calendar-date {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 22px;
+  }
+  .vertical-line {
+    width: 50%;
+    height: 1px;
+    background-color: #333;
+
+    position: absolute;
+    left: 24%;
+    top: 49%;
+  }
+
+  .horizontal-line {
+    width: 1px;
+    height: 50%;
+    background-color: #333;
+
+    position: absolute;
+    left: 49%;
+    top: 24%;
+  }
 }
 </style>

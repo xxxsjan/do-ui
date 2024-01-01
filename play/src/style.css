@@ -14,9 +14,6 @@
   -webkit-text-size-adjust: 100%;
 }
 
- 
- 
-
 body {
   margin: 0;
   display: flex;
@@ -54,7 +51,8 @@ button:focus-visible {
 }
 
 #app {
-  max-width: 1280px;
+  /* max-width: 1280px; */
+  width: 100%;
   text-align: center;
 }
 
@@ -63,8 +61,27 @@ button:focus-visible {
     color: #213547;
     background-color: #ffffff;
   }
- 
+
   button {
     background-color: #f9f9f9;
   }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+.align-center {
+  align-items: center;
 }
