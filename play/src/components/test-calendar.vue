@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- <button @click="handlePrint">打印</button> -->
-    <div id="printTest">
+    <button @click="handlePrint">打印</button>
+    <!-- <div id="printTest">
       <p>我是打印区域</p>
-    </div>
+    </div> -->
     <!-- <button v-print="'#printTest'">print nb 打印</button> -->
     <div class="calendar-demo" ref="calendarRef">
       <d-calendar v-model="currentDate">
@@ -15,12 +15,12 @@
 
             <div class="parent">
               <div
-                class="flex flex-col"
+                class="flex flex-col child"
                 v-for="(item, index) in 4"
                 :key="index"
               >
-                <div style="height: 50%">/</div>
-                <div style="height: 50%">/</div>
+                <div style="height: 50%; text-align: center">/</div>
+                <div style="height: 50%; text-align: center">/</div>
               </div>
             </div>
           </div>
@@ -53,10 +53,10 @@ function handlePrint() {
   }
 }
 .calendar-demo {
-  --w: 1536px;
-  width: var(--w);
+  // --w: 1536px;
+  // width: var(--w);
   // 297/210=1.41
-  height: calc(var(--w ) / 1.41);
+  // height: calc(var(--w) / 1.41);
 }
 .calendar-demo .d-calendar__header {
   display: none;
@@ -67,18 +67,23 @@ function handlePrint() {
   height: 100%;
 
   .parent {
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(2, 1fr);
+    // grid-column-gap: 0px;
+    // grid-row-gap: 0px;
+    display: flex;
+    flex-wrap: wrap;
 
     position: absolute;
     left: -8px;
     top: -8px;
     width: 100%;
     height: 100%;
+
+    .child {
+      width: 50%;
+    }
   }
 
   .calendar-date {
@@ -107,5 +112,7 @@ function handlePrint() {
     left: 49%;
     top: 24%;
   }
+}
+@media print {
 }
 </style>
