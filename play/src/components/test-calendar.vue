@@ -4,7 +4,7 @@
     <div id="printTest">
       <p>我是打印区域</p>
     </div>
-    <button v-print="'#printTest'">print nb 打印</button>
+    <!-- <button v-print="'#printTest'">print nb 打印</button> -->
     <div class="calendar-demo" ref="calendarRef">
       <d-calendar v-model="currentDate">
         <template #date-cell="{ data }">
@@ -52,7 +52,12 @@ function handlePrint() {
     height: 10px;
   }
 }
-
+.calendar-demo {
+  --w: 1536px;
+  width: var(--w);
+  // 297/210=1.41
+  height: calc(var(--w ) / 1.41);
+}
 .calendar-demo .d-calendar__header {
   display: none;
 }
