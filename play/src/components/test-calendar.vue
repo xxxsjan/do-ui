@@ -10,18 +10,15 @@
         <template #date-cell="{ data }">
           <div class="calendar-item">
             <div class="calendar-date">{{ data.text }}</div>
-            <div class="vertical-line"></div>
-            <div class="horizontal-line"></div>
+            <!-- <div class="vertical-line"></div> -->
+            <!-- <div class="horizontal-line"></div> -->
 
             <div class="parent">
               <div
-                class="flex flex-col child"
+                class="child"
                 v-for="(item, index) in 4"
                 :key="index"
-              >
-                <div style="height: 50%; text-align: center">/</div>
-                <div style="height: 50%; text-align: center">/</div>
-              </div>
+              ></div>
             </div>
           </div>
         </template>
@@ -76,13 +73,35 @@ function handlePrint() {
     flex-wrap: wrap;
 
     position: absolute;
-    left: -8px;
-    top: -8px;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
 
     .child {
       width: 50%;
+      box-sizing: border-box;
+
+      &:nth-child(1) {
+        border-right-style: solid;
+        border-right-width: 1px;
+      }
+      &:nth-child(2) {
+        border-left-style: solid;
+        border-left-width: 1px;
+      }
+      &:nth-child(3) {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-style: solid;
+        border-right-width: 1px;
+      }
+      &:nth-child(4) {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-left-style: solid;
+        border-left-width: 1px;
+      }
     }
   }
 
