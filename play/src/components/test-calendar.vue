@@ -1,27 +1,24 @@
 <template>
   <div>
-    <!-- <button @click="handlePrint">打印</button> -->
-    <div id="printTest">
+    <button @click="handlePrint">打印</button>
+    <!-- <div id="printTest">
       <p>我是打印区域</p>
-    </div>
-    <button v-print="'#printTest'">print nb 打印</button>
+    </div> -->
+    <!-- <button v-print="'#printTest'">print nb 打印</button> -->
     <div class="calendar-demo" ref="calendarRef">
       <d-calendar v-model="currentDate">
         <template #date-cell="{ data }">
           <div class="calendar-item">
             <div class="calendar-date">{{ data.text }}</div>
-            <div class="vertical-line"></div>
-            <div class="horizontal-line"></div>
+            <!-- <div class="vertical-line"></div> -->
+            <!-- <div class="horizontal-line"></div> -->
 
             <div class="parent">
               <div
-                class="flex flex-col"
+                class="child"
                 v-for="(item, index) in 4"
                 :key="index"
-              >
-                <div style="height: 50%">/</div>
-                <div style="height: 50%">/</div>
-              </div>
+              ></div>
             </div>
           </div>
         </template>
@@ -52,7 +49,12 @@ function handlePrint() {
     height: 10px;
   }
 }
-
+.calendar-demo {
+  // --w: 1536px;
+  // width: var(--w);
+  // 297/210=1.41
+  // height: calc(var(--w) / 1.41);
+}
 .calendar-demo .d-calendar__header {
   display: none;
 }
@@ -62,18 +64,45 @@ function handlePrint() {
   height: 100%;
 
   .parent {
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    // display: grid;
+    // grid-template-columns: repeat(2, 1fr);
+    // grid-template-rows: repeat(2, 1fr);
+    // grid-column-gap: 0px;
+    // grid-row-gap: 0px;
+    display: flex;
+    flex-wrap: wrap;
 
     position: absolute;
-    left: -8px;
-    top: -8px;
+    left: 0px;
+    top: 0px;
     width: 100%;
     height: 100%;
+
+    .child {
+      width: 50%;
+      box-sizing: border-box;
+
+      &:nth-child(1) {
+        border-right-style: solid;
+        border-right-width: 1px;
+      }
+      &:nth-child(2) {
+        border-left-style: solid;
+        border-left-width: 1px;
+      }
+      &:nth-child(3) {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-right-style: solid;
+        border-right-width: 1px;
+      }
+      &:nth-child(4) {
+        border-top-style: solid;
+        border-top-width: 1px;
+        border-left-style: solid;
+        border-left-width: 1px;
+      }
+    }
   }
 
   .calendar-date {
@@ -102,5 +131,7 @@ function handlePrint() {
     left: 49%;
     top: 24%;
   }
+}
+@media print {
 }
 </style>
